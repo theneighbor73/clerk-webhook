@@ -1,11 +1,10 @@
 "use client";
 
-// import { useToast } from "@/hooks/use-toast";
-import { Toast } from "radix-ui";
+import { useToast } from "@/hooks/use-toast";
 import { useCallback, useEffect, useState } from "react";
 import { TodoItem } from "@/components/TodoItem";
 import { TodoForm } from "@/components/TodoForm";
-import { Todos } from "@prisma/client";
+import { Todo } from "@prisma/client";
 import { useUser } from "@clerk/nextjs";
 import { AlertTriangle } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -18,7 +17,7 @@ import { useDebounceValue } from "usehooks-ts";
 export default function Dashboard() {
   const { user } = useUser();
   const { toast } = useToast();
-  const [todos, setTodos] = useState<Todos[]>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
