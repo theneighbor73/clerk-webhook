@@ -1,5 +1,4 @@
 import {
-  getAuth,
   clerkMiddleware,
   createRouteMatcher,
   clerkClient,
