@@ -66,12 +66,10 @@ export async function POST(req: Request) {
       }
 
       // Create the user in the database
-      const newUser = await prisma.user.create({
-        data: {
-          id: evt.data.id!,
-          email: primaryEmail.email_address,
-          isSubscribed: false, // Default setting
-        },
+      const newUser = await prisma.user.upsert({
+        where: { id: evt.data.id },
+        update: {},
+        create: { id: evt.data.id, email: primaryEmail.email_address },
       });
       console.log("New user created:", newUser);
     } catch (error) {

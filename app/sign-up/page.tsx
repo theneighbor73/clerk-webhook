@@ -79,26 +79,26 @@ export default function SignUp() {
 
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
-        const response = await fetch(`/api/user/register`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            id: completeSignUp.createdUserId,
-            email: emailAddress,
-          }),
-        });
+        // const response = await fetch(`/api/user/register`, {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({
+        //     id: completeSignUp.createdUserId,
+        //     email: emailAddress,
+        //   }),
+        // });
 
-        // const data = await response.json();
+        // // const data = await response.json();
 
-        // console.log("User Registration Response:", data);
+        // // console.log("User Registration Response:", data);
 
-        if (!response.ok) {
-          throw new Error("Failed to register user in the database");
-        }
+        // if (!response.ok) {
+        //   throw new Error("Failed to register user in the database");
+        // }
 
-        if (response.ok) {
-          router.push("/dashboard");
-        }
+        // if (response.ok) {
+        //   router.push("/dashboard");
+        // }
       }
     } catch (err: any) {
       console.error(err);
